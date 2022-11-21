@@ -1,0 +1,19 @@
+
+public class RFormat extends Instruction {
+
+	private static String[] dictionary = {"10001010000", "10001011000", "10011011000", "11001010000", "11001011000", "11010011010", "11010011011", "11010110000", "11101011000"};
+	private static String[] names = {"AND", "ADD", "MUL", "EOR", "SUB", "LSR", "LSL", "BR", "SUBS"};;
+	
+	private int Rm;
+	private int shamt;
+	private int Rn;
+	private int Rd;
+	
+	public RFormat(String Rm, String shamt, String Rn, String Rd) {
+		this.Rm = Integer.parseInt(Rm, 2);
+		this.shamt = Integer.parseInt(shamt, 2);
+		this.Rn = Integer.parseInt(Rn, 2);
+		this.Rd = Integer.parseInt(Rd, 2);
+	}
+	
+}
