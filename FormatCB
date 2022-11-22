@@ -1,5 +1,4 @@
-
-public class CBFormat extends Instruction {
+class CBFormat extends Instruction {
 
 	private static String[] dictionary = {"01010100", "10110100", "10110101"};
 	private static String[] names = {"B.", "CBZ", "CBNZ"};;
@@ -11,16 +10,22 @@ public class CBFormat extends Instruction {
 	private String cond;
 	
 	public CBFormat(String binary) {
-		opCode = names[binarySearch(binary.substring(0, 8), dictionary)];
-		CONDBRAddress = Integer.parseInt(binary.substring(8, 27), 2);
-		RtOrig = binary.substring(27, 32);
-		Rt = Integer.parseInt(binary.substring(27, 32), 2);
-		if (opCode.equals("B.")) {
-			cond = this.translateHex(RtOrig);
+		int b = binarySearch(binary.substring(0, 8),dictionary);
+		if (b != -1) {
+			opCode = names[b];
+			CONDBRAddress = Integer.parseInt(binary.substring(8, 27), 2);
+			RtOrig = binary.substring(27, 32);
+			Rt = Integer.parseInt(binary.substring(27, 32), 2);
+			if (opCode.equals("B.")) {
+				cond = this.translateHex(RtOrig);
+			}
+			else {
+				cond = null;
+			}
+			
+			System.out.println("Is CB Type");
 		}
-		else {
-			cond = null;
-		}
+		
 	}
 	
 	public String[] getDictionary() {
@@ -28,7 +33,8 @@ public class CBFormat extends Instruction {
 	}
 	
 	private String translateHex(String binary) {
-		String output = Integer.toHexString(Integer.parseInt(binary.substring(27, 32), 2));
+		//int b = Integer.parseInt(binary.substring(27, 32), 2);
+		String output = Integer.toHexString(Rt);
 		char res = output.charAt(0);
 		
 		switch(res) {
