@@ -1,0 +1,15 @@
+
+public class BFormat extends Instruction {
+
+	private static String[] dictionary = {"000101", "100101"};
+	private static String[] names = {"B", "BL"};;
+	
+	private String opCode;
+	private int BRAddress;
+	
+	public BFormat(String binary) {
+		opCode = names[binarySearch(opCode, dictionary)];
+		BRAddress = Integer.parseInt(binary.substring(6, 32), 2);
+	}
+	
+}
