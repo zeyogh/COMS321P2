@@ -12,7 +12,7 @@ public class BFormat extends Instruction {
 		BRAddress = Integer.parseInt(binary.substring(6, 32), 2);
 	}
 	
-	public String[] getDictionary() {
+	public static String[] getDictionary() {
 		return dictionary;
 	}
 	
