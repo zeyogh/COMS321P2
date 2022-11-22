@@ -1,0 +1,66 @@
+
+public class CBFormat extends Instruction {
+
+	private static String[] dictionary = {"01010100", "10110100", "10110101"};
+	private static String[] names = {"B.", "CBZ", "CBNZ"};;
+	
+	private String opCode;
+	private int CONDBRAddress;
+	private String RtOrig;
+	private int Rt;
+	private String cond;
+	
+	public CBFormat(String binary) {
+		opCode = names[binarySearch(opCode, dictionary)];
+		CONDBRAddress = Integer.parseInt(binary.substring(6, 27), 2);
+		RtOrig = binary.substring(27, 32);
+		Rt = Integer.parseInt(binary.substring(27, 32), 2);
+		if (opCode.equals("B.")) {
+			cond = this.translateHex(RtOrig);
+		}
+		else {
+			cond = null;
+		}
+	}
+	
+	private String translateHex(String binary) {
+		String output = Integer.toHexString(Integer.parseInt(binary.substring(27, 32), 2));
+		char res = output.charAt(0);
+		
+		switch(res) {
+			case '0':
+				return "EQ";
+			case '1':
+				return "NE";
+			case '2':
+				return "HS";
+			case '3':
+				return "LO";
+			case '4':
+				return "MI";
+			case '5':
+				return "PL";
+			case '6':
+				return "VS";
+			case '7':
+				return "VC";
+			case '8':
+				return "HI";
+			case '9':
+				return "LS";
+			case 'a':
+				return "GE";
+			case 'b':
+				return "LT";
+			case 'c':
+				return "GT";
+			case 'd':
+				return "LE";
+			default:
+				return "Something went wrong!";
+		}
+	}
+	
+	
+	
+}
