@@ -1,0 +1,29 @@
+public abstract class Instruction {
+	
+	
+	public int binarySearch(String s, String[] arr) {
+		
+		int l = 0;
+		int r = arr.length - 1;
+		
+		while (l <= r) {
+			int mid = (l + r) / 2;
+			
+			int res = s.compareTo(arr[mid]);
+			
+			if (res == 0) {
+				return mid;
+			}
+			else if (res > 0) // x is on the right side
+	            l = mid + 1;
+
+	        else                  // x is on the left side
+	            r = mid - 1;
+			
+		}
+		
+		return -1;
+		
+	}
+	
+}
