@@ -1,0 +1,21 @@
+
+public class IFormat extends Instruction {
+
+	private static String[] dictionary = {"1001000100", "1001001000", "1011001000", "1101000100", "1101001000", "1111000100"};
+	private static String[] names = {"ADDI", "ANDI", "ORRI", "SUBI", "EORI", "SUBIS"};
+	
+	private String opCode;
+	private int ALUImmediate;
+	private int Rn;
+	private int Rd;
+	
+	public IFormat(String binary) {
+		opCode = names[binarySearch(opCode, dictionary)];
+		ALUImmediate = Integer.parseInt(binary.substring(10, 22), 2);
+		Rn = Integer.parseInt(binary.substring(22, 27), 2);
+		Rd = Integer.parseInt(binary.substring(27, 32), 2);
+	}
+	
+	
+	
+}
