@@ -28,7 +28,7 @@ class CBFormat extends Instruction {
 		
 	}
 	
-	public String[] getDictionary() {
+	public static String[] getDictionary() {
 		return dictionary;
 	}
 	
