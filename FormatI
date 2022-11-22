@@ -16,8 +16,12 @@ public class IFormat extends Instruction {
 		Rd = Integer.parseInt(binary.substring(27, 32), 2);
 	}
 	
-	public String[] getDictionary() {
+	public static String[] getDictionary() {
 		return dictionary;
+	}
+	
+	public String toString() {
+		return opCode + " X" + Rd + ", X" + Rn + ", #" + ALUImmediate;
 	}
 	
 }
