@@ -23,7 +23,7 @@ public class DFormat extends Instruction {
 	}
 	
 	public String toString() {
-		return opCode + " X" + Rd + ", [X" + Rn + ", " + DTAddress + "]";
+		return opCode + " X" + Rd + ", [X" + Rn + ", #" + DTAddress + "]";
 	}
 	
 }
