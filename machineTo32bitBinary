@@ -11,14 +11,35 @@ public class DecodeBinary{
 		fetch f = new fetch();
 		s = f.readInput("C:\\Users\\jacob\\Desktop\\BinaryTest.legv8asm.machine");
 		
+		
+		    
+		    
 		for (int i = 0; i < s.size(); i++) {
-			RFormat rType = new RFormat(s.get(i));
-			IFormat iType = new IFormat(s.get(i));
-			DFormat dType = new DFormat(s.get(i));
-			BFormat bType = new BFormat(s.get(i));
-			CBFormat cbType = new CBFormat(s.get(i));
+			if (Instruction.binarySearch(s.get(i), RFormat.getDictionary()) != -1) {
+				RFormat r = new RFormat(s.get(i));
+				System.out.println("HERE");
+			}
+			else if (Instruction.binarySearch(s.get(i), IFormat.getDictionary()) != -1) {
+				IFormat iff = new IFormat(s.get(i));
+			}
+			else if (Instruction.binarySearch(s.get(i), DFormat.getDictionary()) != -1) {
+				DFormat d = new DFormat(s.get(i));
+			}
+			else if (Instruction.binarySearch(s.get(i), BFormat.getDictionary()) != -1) {
+				BFormat b = new BFormat(s.get(i));
+			}
+			else if (Instruction.binarySearch(s.get(i), CBFormat.getDictionary()) != -1) {
+				CBFormat cb = new CBFormat(s.get(i));
+			}
 			
-			System.out.println("---------------------");
+			
+//			RFormat rType = new RFormat(s.get(i));
+//			IFormat iType = new IFormat(s.get(i));
+//			DFormat dType = new DFormat(s.get(i));
+//			BFormat bType = new BFormat(s.get(i));
+//			CBFormat cbType = new CBFormat(s.get(i));
+//			
+		System.out.println("---------------------");
 		}
 		
 	}
