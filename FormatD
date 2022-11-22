@@ -1,0 +1,23 @@
+
+public class DFormat extends Instruction {
+
+	private static String[] dictionary = {"11111000000", "11111000010"};
+	private static String[] names = {"STUR", "LDUR"};;
+	
+	private String opCode;
+	private int DTAddress;
+	private int op;
+	private int Rn;
+	private int Rd;
+	
+	public DFormat(String binary) {
+		opCode = names[binarySearch(opCode, dictionary)];
+		DTAddress = Integer.parseInt(binary.substring(11, 20), 2);
+		op = Integer.parseInt(binary.substring(20, 22), 2);
+		Rn = Integer.parseInt(binary.substring(22, 27), 2);
+		Rd = Integer.parseInt(binary.substring(27, 32), 2);
+	}
+	
+	
+	
+}
