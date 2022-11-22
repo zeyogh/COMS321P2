@@ -8,8 +8,12 @@ public class BFormat extends Instruction {
 	private int BRAddress;
 	
 	public BFormat(String binary) {
-		opCode = names[binarySearch(opCode, dictionary)];
+		opCode = names[binarySearch(binary.substring(0, 6), dictionary)];
 		BRAddress = Integer.parseInt(binary.substring(6, 32), 2);
+	}
+	
+	public String[] getDictionary() {
+		return dictionary;
 	}
 	
 }
