@@ -1,19 +1,17 @@
 
-public class RFormat extends Instruction {
+public class IFormat extends Instruction {
 
-	private static String[] dictionary = {"10001010000", "10001011000", "10011011000", "11001010000", "11001011000", "11010011010", "11010011011", "11010110000", "11101011000"};
-	private static String[] names = {"AND", "ADD", "MUL", "EOR", "SUB", "LSR", "LSL", "BR", "SUBS"};;
+	private static String[] dictionary = {"1001000100", "1001001000", "1011001000", "1101000100", "1101001000", "1111000100"};
+	private static String[] names = {"ADDI", "ANDI", "ORRI", "SUBI", "EORI", "SUBIS"};
 	
 	private String opCode;
-	private int Rm;
-	private int shamt;
+	private int ALUImmediate;
 	private int Rn;
 	private int Rd;
 	
-	public RFormat(String binary) {
-		opCode = names[binarySearch(binary.substring(0, 11), dictionary)];
-		Rm = Integer.parseInt(binary.substring(11, 16), 2);
-		shamt = Integer.parseInt(binary.substring(16, 22), 2);
+	public IFormat(String binary) {
+		opCode = names[binarySearch(binary.substring(0, 10), dictionary)];
+		ALUImmediate = Integer.parseInt(binary.substring(10, 22), 2);
 		Rn = Integer.parseInt(binary.substring(22, 27), 2);
 		Rd = Integer.parseInt(binary.substring(27, 32), 2);
 	}
