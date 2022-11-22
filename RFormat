@@ -10,19 +10,14 @@ public class RFormat extends Instruction {
 	private int Rn;
 	private int Rd;
 	
-	public RFormat(String op, String Rm, String shamt, String Rn, String Rd) {
-		this.Rm = Integer.parseInt(Rm, 2);
-		this.shamt = Integer.parseInt(shamt, 2);
-		this.Rn = Integer.parseInt(Rn, 2);
-		this.Rd = Integer.parseInt(Rd, 2);
-		
-		int count = 0;
-		for (String s : dictionary) {
-			if (op.equals(s)) {
-				op = names[count];
-			}
-			count++;
-		}
+	public RFormat(String code) {
+		this.op = names[binarySearch(op, dictionary)];
+		this.Rm = Integer.parseInt(code.substring(11, 16), 2);
+		this.shamt = Integer.parseInt(code.substring(16, 22), 2);
+		this.Rn = Integer.parseInt(code.substring(22, 27), 2);
+		this.Rd = Integer.parseInt(code.substring(27, 32), 2);
 	}
+	
+	
 	
 }
