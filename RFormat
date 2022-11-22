@@ -10,12 +10,12 @@ public class RFormat extends Instruction {
 	private int Rn;
 	private int Rd;
 	
-	public RFormat(String code) {
+	public RFormat(String binary) {
 		this.op = names[binarySearch(op, dictionary)];
-		this.Rm = Integer.parseInt(code.substring(11, 16), 2);
-		this.shamt = Integer.parseInt(code.substring(16, 22), 2);
-		this.Rn = Integer.parseInt(code.substring(22, 27), 2);
-		this.Rd = Integer.parseInt(code.substring(27, 32), 2);
+		this.Rm = Integer.parseInt(binary.substring(11, 16), 2);
+		this.shamt = Integer.parseInt(binary.substring(16, 22), 2);
+		this.Rn = Integer.parseInt(binary.substring(22, 27), 2);
+		this.Rd = Integer.parseInt(binary.substring(27, 32), 2);
 	}
 	
 	
