@@ -11,13 +11,15 @@ public class DFormat extends Instruction {
 	private int Rd;
 	
 	public DFormat(String binary) {
-		opCode = names[binarySearch(opCode, dictionary)];
+		opCode = names[binarySearch(binary.substring(0, 11), dictionary)];
 		DTAddress = Integer.parseInt(binary.substring(11, 20), 2);
 		op = Integer.parseInt(binary.substring(20, 22), 2);
 		Rn = Integer.parseInt(binary.substring(22, 27), 2);
 		Rd = Integer.parseInt(binary.substring(27, 32), 2);
 	}
 	
-	
+	public String[] getDictionary() {
+		return dictionary;
+	}
 	
 }
