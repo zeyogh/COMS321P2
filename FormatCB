@@ -11,8 +11,8 @@ public class CBFormat extends Instruction {
 	private String cond;
 	
 	public CBFormat(String binary) {
-		opCode = names[binarySearch(opCode, dictionary)];
-		CONDBRAddress = Integer.parseInt(binary.substring(6, 27), 2);
+		opCode = names[binarySearch(binary.substring(0, 8), dictionary)];
+		CONDBRAddress = Integer.parseInt(binary.substring(8, 27), 2);
 		RtOrig = binary.substring(27, 32);
 		Rt = Integer.parseInt(binary.substring(27, 32), 2);
 		if (opCode.equals("B.")) {
@@ -21,6 +21,10 @@ public class CBFormat extends Instruction {
 		else {
 			cond = null;
 		}
+	}
+	
+	public String[] getDictionary() {
+		return dictionary;
 	}
 	
 	private String translateHex(String binary) {
