@@ -62,23 +62,20 @@ public class DecodeBinary{
 			else if (Instruction.binarySearch(s.get(i).substring(0, 6), BFormat.getDictionary()) != -1) {
 				BFormat b = new BFormat(s.get(i));
 				file.add(b.toString());
-				int label = b.getLabelLine();
 				indexes.add(file.size() - 1);
-				lines.add(label + file.size() - 1);
+				lines.add(b.getLabelLine() + file.size() - 1);
 			}
 			else if (Instruction.binarySearch(s.get(i).substring(0, 8), CBFormat.getDictionary()) != -1) {
 				CBFormat cb = new CBFormat(s.get(i));
 				file.add(cb.toString());
-				int label = cb.getLabelLine();
 				indexes.add(file.size() - 1);
-				lines.add(label + file.size() - 1);
+				lines.add(cb.getLabelLine() + file.size() - 1);
 			}
 
 		}
 		
 		
 		for (int i = 0; i < indexes.size(); i++) {
-//			boolean added = setOrAdd(lines.get(i), labels.get(i), file);
 			String labelNum = file.get(indexes.get(i)).charAt(file.get(indexes.get(i)).length() - 1) + "";
 			boolean added = setOrAdd(lines.get(i), labelNum, file);
 			if (added) {
