@@ -5,16 +5,31 @@ public class BFormat extends Instruction {
 	private static String[] names = {"B", "BL"};;
 	
 	private String opCode;
-	private int BRAddress;
+	private String address;
+	private int labelLine;
 	
 	public BFormat(String binary) {
+		super();
 		opCode = names[binarySearch(binary.substring(0, 6), dictionary)];
-		BRAddress = Integer.parseInt(binary.substring(6, 32), 2);
+		address = binary.substring(6, 32);
+		labelLine = this.parseAddress(address);
+		this.incrementLabelCount();
 	}
 	
 	public static String[] getDictionary() {
 		return dictionary;
 	}
 	
-}
+	@Override
+	public String toString() {
+		return opCode + " Label" + this.getLabelCount();
+	}
+	
+	public int getLabelLine() {
+		return labelLine;
+	}
 
+	
+	
+	
+}
