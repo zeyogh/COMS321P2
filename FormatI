@@ -20,8 +20,9 @@ public class IFormat extends Instruction {
 		return dictionary;
 	}
 	
+	@Override
 	public String toString() {
-		return opCode + " X" + Rd + ", X" + Rn + ", #" + ALUImmediate;
+		return opCode + " X" + Rd + ", X" + Rn + ", #" + ALUImmediate + "\t";
 	}
 	
 }
