@@ -22,6 +22,7 @@ public class DFormat extends Instruction {
 		return dictionary;
 	}
 	
+	@Override
 	public String toString() {
 		return opCode + " X" + Rd + ", [X" + Rn + ", #" + DTAddress + "]";
 	}
