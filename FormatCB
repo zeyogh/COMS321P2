@@ -1,39 +1,51 @@
-class CBFormat extends Instruction {
+
+public class CBFormat extends Instruction {
 
 	private static String[] dictionary = {"01010100", "10110100", "10110101"};
 	private static String[] names = {"B.", "CBZ", "CBNZ"};;
 	
 	private String opCode;
-	private int CONDBRAddress;
+	private String address;
 	private String RtOrig;
 	private int Rt;
 	private String cond;
+	private int labelLine;
 	
 	public CBFormat(String binary) {
-		int b = binarySearch(binary.substring(0, 8),dictionary);
-		if (b != -1) {
-			opCode = names[b];
-			CONDBRAddress = Integer.parseInt(binary.substring(8, 27), 2);
-			RtOrig = binary.substring(27, 32);
-			Rt = Integer.parseInt(binary.substring(27, 32), 2);
-			if (opCode.equals("B.")) {
-				cond = this.translateHex(RtOrig);
-			}
-			else {
-				cond = null;
-			}
-			
-			System.out.println("Is CB Type");
+		super();
+		opCode = names[binarySearch(binary.substring(0, 8), dictionary)];
+		address = binary.substring(8, 27);
+		RtOrig = binary.substring(27, 32);
+		Rt = Integer.parseInt(binary.substring(27, 32), 2);
+		if (opCode.equals("B.")) {
+			cond = this.translateHex(RtOrig);
 		}
-		
+		else {
+			cond = null;
+		}
+		labelLine = this.parseAddress(address);
+		this.incrementLabelCount();
 	}
 	
 	public static String[] getDictionary() {
 		return dictionary;
 	}
+
+	@Override
+	public String toString() {
+		if (cond != null) {
+			return opCode + cond + " Label" + this.getLabelCount();
+		}
+		return opCode + " X" + Rt + " Label" + this.getLabelCount();
+	}
+	
+	public int getLabelLine() {
+		return labelLine;
+	}
+	
+
 	
 	private String translateHex(String binary) {
-		//int b = Integer.parseInt(binary.substring(27, 32), 2);
 		String output = Integer.toHexString(Rt);
 		char res = output.charAt(0);
 		
