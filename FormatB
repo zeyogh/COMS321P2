@@ -9,7 +9,6 @@ public class BFormat extends Instruction {
 	private int labelLine;
 	
 	public BFormat(String binary) {
-		super();
 		opCode = names[binarySearch(binary.substring(0, 6), dictionary)];
 		address = binary.substring(6, 32);
 		labelLine = this.parseAddress(address);
