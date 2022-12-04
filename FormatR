@@ -38,6 +38,9 @@ public class RFormat extends Instruction {
 		if (opCode.equals("BR") && Rn == 30) {
 			return "BR LR";
 		}
+		else if (opCode.equals("LSR") || opCode.equals("LSL")) {
+			return opCode + " X" + Rd + ", X" + Rn + ", #" + shamt;
+		}
 		else if (opCode.charAt(0) == 'P' || opCode.charAt(0) == 'D' || opCode.charAt(0) == 'H') {
 			return opCode;
 		}
