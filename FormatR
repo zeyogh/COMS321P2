@@ -16,10 +16,10 @@ public class RFormat extends Instruction {
 		opCode = names[bsIndex];
 		
 		if (bsIndex == length - 1 || bsIndex == length - 2 || bsIndex == length - 3 || bsIndex == length - 4) {
-			Rm = -1;
-			shamt = -1;
-			Rn = -1;
-			Rd = -1;
+			Rm = 0;
+			shamt = 0;
+			Rn = 0;
+			Rd = 0;
 		}
 		else {
 			Rm = Integer.parseInt(binary.substring(11, 16), 2);
@@ -37,6 +37,9 @@ public class RFormat extends Instruction {
 	public String toString() {
 		if (opCode.equals("BR") && Rn == 30) {
 			return "BR LR";
+		}
+		else if (opCode.equals("BR")) {
+			return "BR X" + Rn;
 		}
 		else if (opCode.equals("LSR") || opCode.equals("LSL")) {
 			return opCode + " X" + Rd + ", X" + Rn + ", #" + shamt;
