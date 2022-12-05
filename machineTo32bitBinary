@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -9,8 +10,9 @@ public class DecodeBinary{
 	
 	public static void main(String[] args) throws IOException {
 		ArrayList<String> s = new ArrayList<String>();
-		//fetch f = new fetch();
-		//s = f.readInput("C:\\Users\\jacob\\Desktop\\BinaryTest.legv8asm.machine");
+		readFile("PA1.txt", s);
+//		fetch f = new fetch();
+//		s = f.readInput("PA1.txt");
 		
 		/*s.add("10010001000000000000010000000000");
 		s.add("10010100000000000000000000000100");
@@ -74,9 +76,19 @@ public class DecodeBinary{
 
 		}
 		
+//		for (String str : file) {
+//			System.out.println(str);
+//		}
 		
 		for (int i = 0; i < indexes.size(); i++) {
-			String labelNum = file.get(indexes.get(i)).charAt(file.get(indexes.get(i)).length() - 1) + "";
+			String inst = file.get(indexes.get(i));
+			String labelNum = "";
+			Scanner scanInst = new Scanner(inst);
+			while (scanInst.hasNext()) {
+				labelNum = scanInst.next();
+			}
+			scanInst.close();
+//			String labelNum = file.get(indexes.get(i)).charAt(file.get(indexes.get(i)).length() - 1) + "";
 			boolean added = setOrAdd(lines.get(i), labelNum, file);
 			if (added) {
 				for (int k = i + 1; k < lines.size(); k++) {
@@ -122,27 +134,37 @@ public class DecodeBinary{
 		}
 		
 		if (count < 0) {
-			s.add(0, "Label" + label + ":");
+			s.add(0, label + ":");
 		}
 		else if (count == s.size()) {
-			s.add("Label" + label + ":");
+			s.add(label + ":");
 		}
 		else if (count < s.size()){
 			if (s.get(count) == null) {
-				s.set(count, "Label" + label + ":");
+				s.set(count, label + ":");
 			}
 			else {
-				s.add(count, "Label" + label + ":");
+				s.add(count, label + ":");
 			}
 		}
 		else {
 			while (s.size() < count - 1) {
 				s.add(null);
 			}
-			s.add("Label" + label + ":");
+			s.add(label + ":");
 		}
 		return true;
 	}
+	
+	public static void readFile(String filename, ArrayList<String> arr) throws FileNotFoundException {
+		File file = new File(filename);
+		Scanner scan = new Scanner (file);
+		while (scan.hasNextLine()) {
+			arr.add(scan.nextLine());
+		}
+		scan.close();
+	}
+	
 }
 
 class fetch {
@@ -179,9 +201,9 @@ class fetch {
 		       }   
 	       }
 	       
-	       for (int i = 0; i < instructions.size(); i++) {
-	    	   System.out.println(instructions.get(i));
-	       }
+//	       for (int i = 0; i < instructions.size(); i++) {
+//	    	   System.out.println(instructions.get(i));
+//	       }
 	       
 	       return instructions;
 	}
