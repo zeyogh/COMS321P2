@@ -11,7 +11,7 @@ public class IFormat extends Instruction {
 	
 	public IFormat(String binary) {
 		opCode = names[binarySearch(binary.substring(0, 10), dictionary)];
-		ALUImmediate = Integer.parseInt(binary.substring(10, 22), 2);
+		ALUImmediate = this.parseAddress(binary.substring(10, 22));
 		Rn = Integer.parseInt(binary.substring(22, 27), 2);
 		Rd = Integer.parseInt(binary.substring(27, 32), 2);
 	}
