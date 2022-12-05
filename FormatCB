@@ -35,7 +35,7 @@ public class CBFormat extends Instruction {
 		if (cond != null) {
 			return opCode + cond + " Label" + this.getLabelCount();
 		}
-		return opCode + " X" + Rt + " Label" + this.getLabelCount();
+		return opCode + " X" + Rt + ", Label" + this.getLabelCount();
 	}
 	
 	public int getLabelLine() {
