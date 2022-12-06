@@ -1,8 +1,8 @@
 
 public class RFormat extends Instruction {
 
-	private static String[] dictionary = {"10001010000", "10001011000", "10011011000", "11001010000", "11001011000", "11010011010", "11010011011", "11010110000", "11101011000", "11111111100", "11111111101", "11111111110", "11111111111"};
-	private static String[] names = {"AND", "ADD", "MUL", "EOR", "SUB", "LSR", "LSL", "BR", "SUBS", "PRNL", "PRNT", "DUMP", "HALT"};;
+	private static String[] dictionary = {"10001010000", "10001011000", "10011011000", "10101010000" ,"11001010000", "11001011000", "11010011010", "11010011011", "11010110000", "11101011000", "11111111100", "11111111101", "11111111110", "11111111111"};
+	private static String[] names = {"AND", "ADD", "MUL", "ORR" , "EOR", "SUB", "LSR", "LSL", "BR", "SUBS", "PRNL", "PRNT", "DUMP", "HALT"};;
 	
 	private String opCode;
 	private int Rm;
