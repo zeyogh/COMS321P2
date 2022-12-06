@@ -43,10 +43,10 @@ public class RFormat extends Instruction {
 		else if (opCode.equals("LSR") || opCode.equals("LSL")) {
 			return opCode + " X" + Rd + ", X" + Rn + ", #" + shamt;
 		}
-		else if (opCode.charAt(0) == 'P') {
+		else if (opCode.equals("PRNT")) {
 			return opCode + " X" + Rd;
 		}
-		else if (opCode.charAt(0) == 'D' || opCode.charAt(0) == 'H') {
+		else if (opCode.charAt(0) == 'P' || opCode.charAt(0) == 'D' || opCode.charAt(0) == 'H') {
 			return opCode;
 		}
 		return opCode + " X" + Rd + ", X" + Rn + ", X" + Rm;
