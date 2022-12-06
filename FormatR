@@ -19,14 +19,13 @@ public class RFormat extends Instruction {
 			Rm = 0;
 			shamt = 0;
 			Rn = 0;
-			Rd = 0;
 		}
 		else {
 			Rm = Integer.parseInt(binary.substring(11, 16), 2);
 			shamt = Integer.parseInt(binary.substring(16, 22), 2);
 			Rn = Integer.parseInt(binary.substring(22, 27), 2);
-			Rd = Integer.parseInt(binary.substring(27, 32), 2);
 		}
+		Rd = Integer.parseInt(binary.substring(27, 32), 2);
 	}
 	
 	public static String[] getDictionary() {
@@ -44,7 +43,10 @@ public class RFormat extends Instruction {
 		else if (opCode.equals("LSR") || opCode.equals("LSL")) {
 			return opCode + " X" + Rd + ", X" + Rn + ", #" + shamt;
 		}
-		else if (opCode.charAt(0) == 'P' || opCode.charAt(0) == 'D' || opCode.charAt(0) == 'H') {
+		else if (opCode.charAt(0) == 'P') {
+			return opCode + " X" + Rd;
+		}
+		else if (opCode.charAt(0) == 'D' || opCode.charAt(0) == 'H') {
 			return opCode;
 		}
 		return opCode + " X" + Rd + ", X" + Rn + ", X" + Rm;
